@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "sdhypermodern-python"
+version = "0.1.0"
+description = "The hypermodern Python project"
+license = "MIT"
+authors = ["Semio Dsouza <semiod@gmail.com>"]
+readme = "README.md"
+packages = [{include = "sdhypermodern_python", from = "src"}]
+homepage = "https://github.com/semiod/sdhypermodern-python"
+repository = "https://github.com/semiod/sdhypermodern-python"
+keywords = ["sdhypermodern"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+click = "^8.1.6"
+requests = "^2.31.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+coverage = {extras = ["toml"], version = "^7.2.7"}
+pytest-cov = "^4.1.0"
+pytest-mock = "^3.11.1"
+black = "^23.7.0"
+flake8 = "^6.1.0"
+flake8-bandit = "^4.1.1"
+flake8-black = "^0.3.6"
+flake8-bugbear = "^23.7.10"
+flake8-import-order = "^0.18.2"
+safety = "^2.3.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+sdhypermodern-python = "sdhypermodern_python.console:main"
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["sdhypermodern_python"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100

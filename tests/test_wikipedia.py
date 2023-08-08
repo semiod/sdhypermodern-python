@@ -1,0 +1,14 @@
+# tests/test_wikipedia.py
+
+# standard library
+
+# third-party packages
+
+# local packages
+from sdhypermodern_python import wikipedia
+
+
+def test_random_page_uses_given_language(mock_requests_get):
+    wikipedia.random_page(language="de")
+    args, _ = mock_requests_get.call_args
+    assert "de.wikipedia.org" in args[0]
