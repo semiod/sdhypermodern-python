@@ -11,10 +11,7 @@ locations = "src", "tests", "noxfile.py"
 @nox.session(python=["3.10"])
 def tests(session):
     args = session.posargs or ["--cov", "-m", "not e2e"]
-    session.run("poetry", "install", "--no-dev", external=True)
-    install_with_constraints(
-        session, "coverage[toml]", "pytest", "pytest-cov", "pytest-mock"
-    )
+    session.run("poetry", "install", external=True)
     session.run("pytest", *args)
 
 
@@ -34,8 +31,7 @@ def install_with_constraints(session, *args, **kwargs):
 @nox.session(python=["3.10"])
 def lint(session):
     args = session.posargs or locations
-    install_with_constraints(
-        session,
+    session.install(
         "flake8",
         "flake8-bandit",
         "flake8-black",
@@ -48,7 +44,7 @@ def lint(session):
 @nox.session(python="3.10")
 def black(session):
     args = session.posargs or locations
-    install_with_constraints(session, "black")
+    session.install("black")
     session.run("black", *args)
 
 
@@ -64,5 +60,5 @@ def safety(session):
             f"--output={requirements.name}",
             external=True,
         )
-        install_with_constraints(session, "safety")
+        session.install("safety")
         session.run("safety", "check", f"--file={requirements.name}", "--full-report")
