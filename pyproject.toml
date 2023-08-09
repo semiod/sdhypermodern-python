@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sdhypermodern-python"
-version = "0.1.0"
+version = "0.3.0"
 description = "The hypermodern Python project"
 license = "MIT"
 authors = ["Semio Dsouza <semiod@gmail.com>"]
