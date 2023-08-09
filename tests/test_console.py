@@ -5,9 +5,7 @@
 
 # third-party packages
 import click.testing
-
 import pytest
-
 import requests
 
 # local packages
