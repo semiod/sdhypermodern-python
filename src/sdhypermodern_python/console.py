@@ -1,4 +1,5 @@
 # src/sdhypermodern-python/console.py
+"""Command-line interface."""
 
 # standard library
 import textwrap

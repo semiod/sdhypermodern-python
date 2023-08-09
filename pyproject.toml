@@ -34,6 +34,7 @@ mypy = "^1.4.1"
 pytype = {version = "^2023.7.28", python = "3.10"}
 typeguard = "^4.1.0"
 flake8-annotations = "^3.0.1"
+flake8-docstrings = "^1.7.0"
 
 [build-system]
 requires = ["poetry-core"]
