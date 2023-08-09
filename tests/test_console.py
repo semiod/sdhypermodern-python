@@ -16,15 +16,18 @@ from sdhypermodern_python import console
 
 @pytest.fixture
 def runner() -> CliRunner:
+    """Fixture for invoking command-line interfaces."""
     return CliRunner()
 
 
 @pytest.fixture
 def mock_wikipedia_random_page(mocker: MockFixture) -> Mock:
+    """Fixture for mocking wikipedia.random_page."""
     return mocker.patch("sdhypermodern_python.wikipedia.random_page")
 
 
 def test_main_succeeds(runner: CliRunner, mock_requests_get: Mock) -> None:
+    """It exits with a status code of zero."""
     result = runner.invoke(console.main)
     assert result.exit_code == 0
 
@@ -45,7 +48,7 @@ def test_main_uses_en_wikipedia_org(runner: CliRunner, mock_requests_get: Mock):
     assert "en.wikipedia.org" in args[0]
 
 
-def test_main_fails_on_request_errorrunner(CliRunner, mock_requests_get: Mock):
+def test_main_fails_on_request_errorrunner(runner: CliRunner, mock_requests_get: Mock):
     mock_requests_get.side_effect = Exception("Boom")
     result = runner.invoke(console.main)
     assert result.exit_code == 1
@@ -68,5 +71,6 @@ def test_main_uses_specified_language(
 
 @pytest.mark.e2e
 def test_main_succeeds_in_production_env(runner: CliRunner) -> None:
+    """It exits with a status code of zero (end-to-end)."""
     result = runner.invoke(console.main)
     assert result.exit_code == 0
