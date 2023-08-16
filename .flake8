@@ -8,5 +8,5 @@ max-complexity = 10
 import-order-style = google
 application-import-names = sdhypermodern_python,tests
 per-file-ignores =
-    tests/*:S101,ANN
+    tests/*:S101,ANN,D100,D103
     noxfile.py:ANN

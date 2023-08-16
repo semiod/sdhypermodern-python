@@ -1,19 +1,16 @@
-# src/sdhypermodern-python/wikipedia.py
-"""Client for the Wikipedia REST API, version 1."""
+"""Client for the Wikipedia REST API, version 1.
 
-# standard library
+See `API documentation <https://en.wikipedia.org/api/rest_v1/#/>`_.
+"""
 from dataclasses import dataclass
 
-# third-party packages
 import click
 import desert
 import marshmallow
 import requests
 
-# local packages
 
-
-API_URL = "https://{language}.wikipedia.org/api/rest_v1/page/random/summary"
+API_URL: str = "https://{language}.wikipedia.org/api/rest_v1/page/random/summary"
 
 
 @dataclass
@@ -49,7 +46,7 @@ def random_page(language: str = "en") -> Page:
             contained an invalid body.
 
     Example:
-        >>> from sdhypermodern_python import wikipedia
+        >>> from hypermodern_python import wikipedia
         >>> page = wikipedia.random_page(language="en")
         >>> bool(page.title)
         True

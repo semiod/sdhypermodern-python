@@ -1,13 +1,8 @@
-# src/sdhypermodern-python/console.py
 """Command-line interface."""
-
-# standard library
 import textwrap
 
-# third-party packages
 import click
 
-# local packages
 from . import __version__, wikipedia
 
 
