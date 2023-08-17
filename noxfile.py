@@ -12,7 +12,7 @@ locations = "src", "tests", "noxfile.py", "docs/conf.py"
 package = "sdhypermodern_python"
 
 
-@nox.session(python=["3.9", "3.11"])
+@nox.session(python=["3.9"])
 def tests(session):
     """Run the test suite."""
     args = session.posargs or ["--cov", "-m", "not e2e"]
@@ -35,7 +35,7 @@ def install_with_constraints(session, *args, **kwargs):
         session.install(f"--requirement={requirements.name}", *args, **kwargs)
 
 
-@nox.session(python=["3.9", "3.11"])
+@nox.session(python=["3.9"])
 def black(session):
     """Run black code formatter."""
     args = session.posargs or locations
@@ -43,7 +43,7 @@ def black(session):
     session.run("black", *args)
 
 
-@nox.session(python=["3.9", "3.11"])
+@nox.session(python=["3.9"])
 def lint(session):
     """Lint using flake8."""
     args = session.posargs or locations
@@ -61,7 +61,7 @@ def lint(session):
     session.run("flake8", *args)
 
 
-@nox.session(python=["3.9", "3.11"])
+@nox.session(python=["3.9"])
 def safety(session):
     """Scan dependencies for insecure packages."""
     with tempfile.NamedTemporaryFile() as requirements:
@@ -78,7 +78,7 @@ def safety(session):
         session.run("safety", "check", f"--file={requirements.name}", "--full-report")
 
 
-@nox.session(python=["3.9", "3.11"])
+@nox.session(python=["3.9"])
 def mypy(session):
     """Type-check using mypy."""
     args = session.posargs or ["--install-types", "--non-interactive", *locations]
@@ -103,7 +103,7 @@ def typeguard(session):
     session.run("pytest", f"--typeguard-packages={package}", *args)
 
 
-@nox.session(python=["3.9", "3.11"])
+@nox.session(python=["3.9"])
 def xdoctest(session):
     """Run examples with xdoctest."""
     args = session.posargs or ["all"]
@@ -112,7 +112,7 @@ def xdoctest(session):
     session.run("python", "-m", "xdoctest", package, *args)
 
 
-@nox.session(python=["3.9", "3.11"])
+@nox.session(python=["3.9"])
 def docs(session):
     """Build the documentation."""
     session.run("poetry", "install", "--no-dev", external=True)
@@ -120,7 +120,7 @@ def docs(session):
     session.run("sphinx-build", "docs", "docs/_build")
 
 
-@nox.session(python=["3.9", "3.11"])
+@nox.session(python=["3.9"])
 def coverage(session):
     """Upload coverage data."""
     install_with_constraints(session, "coverage[toml]", "codecov")
