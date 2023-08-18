@@ -12,6 +12,6 @@ jobs:
         architecture: x64
     - run: pip install nox
     - run: pip install poetry
-    - run: nox
+    - run: nox --sessions tests-3.9 coverage
       env:
         CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
