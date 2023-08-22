@@ -6,14 +6,14 @@ Reference
     :backlinks: none
 
 
-hypermodern_python.console
+sdhypermodern_python.console
 --------------------------
 
 .. automodule:: sdhypermodern_python.console
    :members:
 
 
-hypermodern_python.wikipedia
+sdhypermodern_python.wikipedia
 ----------------------------
 
 .. automodule:: sdhypermodern_python.wikipedia
